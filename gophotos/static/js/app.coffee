@@ -37,16 +37,22 @@ angular.module 'app', ['ngRoute', 'ngSanitize']
     alert(util.formatResponseError(response))
 
   $scope.share_album = (album)->
+    album._sharing = true
     $http.get('/api/share-album/' + album.id).then (response)->
+      album._sharing = false
       $location.url(response.data.url)
     , (response)->
+      album._sharing = false
       alert(util.formatResponseError(response))
 
   $scope.stop_share_album = (album)->
     return if !album._shared
+    album._stopping_share = true
     $http.delete('/api/shared-albums/' + album._shared.sid).then (response)->
+      album._stopping_share = false
       delete album._shared
     , (response)->
+      album._stopping_share = false
       alert(util.formatResponseError(response))
 ]
 

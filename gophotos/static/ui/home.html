@@ -13,12 +13,10 @@
                 {{a.num_photos}} Photos
             </div>
             <div class="extra content">
-                <div class="fluid ui button" ng-click="share_album(a)" ng-hide="a._shared">
-                    Share
-                </div>
+                <div class="fluid ui button" ng-click="share_album(a)" ng-hide="a._shared" ng-class="{'loading disabled': a._sharing}">Share</div>
                 <div ng-show="a._shared" class="two ui buttons">
                     <a class="positive ui button" ng-href="{{a._shared.url}}">Shared</a>
-                    <div class="negative ui button" ng-click="stop_share_album(a)">Stop Share</div>
+                    <div class="negative ui button" ng-click="stop_share_album(a)" ng-class="{'loading disabled': a._stopping_share}">Stop Share</div>
                 </div>
             </div>
         </div>

@@ -57,9 +57,12 @@
         return alert(util.formatResponseError(response));
       });
       $scope.share_album = function(album) {
+        album._sharing = true;
         return $http.get('/api/share-album/' + album.id).then(function(response) {
+          album._sharing = false;
           return $location.url(response.data.url);
         }, function(response) {
+          album._sharing = false;
           return alert(util.formatResponseError(response));
         });
       };
@@ -67,9 +70,12 @@
         if (!album._shared) {
           return;
         }
+        album._stopping_share = true;
         return $http["delete"]('/api/shared-albums/' + album._shared.sid).then(function(response) {
+          album._stopping_share = false;
           return delete album._shared;
         }, function(response) {
+          album._stopping_share = false;
           return alert(util.formatResponseError(response));
         });
       };
