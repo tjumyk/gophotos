@@ -326,7 +326,7 @@ def _download_and_distribute_photo(album, photo):
     upyun_client.upload_file_content(file_path, content, content_type)
     photo['content']['_upyun_path'] = file_path
     new_url = upyun_client.get_url(file_path)
-    photo['content']['url'] = new_url + '!progressive'
+    photo['content']['url'] = new_url
     ratio = photo['width'] / photo['height']
     photo['thumbnail'] = {
         'url': new_url + '!tiny',
