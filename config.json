@@ -1,0 +1,13 @@
+{
+  "server":{
+    "host": "127.0.0.1",
+    "port": 9000,
+    "threaded": true
+  },
+  "api_working_threads": 8,
+  "external_url": "https://gophotos.kelvmiao.info",
+  "data_cache_folder": "cache/data",
+  "image_cache_folder": "cache/image",
+  "data_share_folder": "share/data",
+  "image_share_folder": "share/image"
+}

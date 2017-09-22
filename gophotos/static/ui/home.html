@@ -1,0 +1,26 @@
+<div class="ui cards">
+    <div ng-repeat="a in albums" class="card">
+        <div class="image">
+            <img ng-src="{{a.thumbnail.url}}" ng-attr-alt="a.title">
+        </div>
+        <div class="content">
+            <div class="header">{{a.title}}</div>
+            <div class="meta">
+                <span class="date">Created in {{format_date(a.publish_time)}}</span>
+            </div>
+            <div class="description">
+                <i class="photo icon"></i>
+                {{a.num_photos}} Photos
+            </div>
+            <div class="extra content">
+                <div class="fluid ui button" ng-click="share_album(a)" ng-hide="a._shared">
+                    Share
+                </div>
+                <div ng-show="a._shared" class="two ui buttons">
+                    <a class="positive ui button" ng-href="{{a._shared.url}}">Shared</a>
+                    <div class="negative ui button" ng-click="stop_share_album(a)">Stop Share</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
