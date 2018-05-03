@@ -4,6 +4,7 @@
 *.pyc
 .venv
 
-secrets/
+secrets/google_client.json
+secrets/upyun.json
 cache/
 share/
